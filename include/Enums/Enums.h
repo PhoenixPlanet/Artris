@@ -16,7 +16,7 @@ enum class BlockType: uint8_t {
 };
 
 enum class BlockState: uint8_t {
-    DEFAULT,
+    SETTING,
     RIGHT,
     DOWN,
     LEFT
@@ -30,6 +30,7 @@ enum class ThrButtonType: uint8_t {
 };
 
 enum class TextAllignType: uint8_t {
+    NONE,
     LEFT,
     CENTER,
     RIGHT
