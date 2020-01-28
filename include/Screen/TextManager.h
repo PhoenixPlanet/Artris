@@ -17,8 +17,8 @@ struct Cursor
 
 class TextManager {
 public:
-    TextManager(const Canvas* canvas);
-    TextManager(const Canvas* canvas, uint8_t text_size);
+    TextManager(Canvas* canvas);
+    TextManager(Canvas* canvas, uint8_t text_size);
 
     ~TextManager();
 
@@ -40,9 +40,10 @@ public:
     uint8_t text_size_();
 
 private:
-    const Canvas* CANVAS;
+    Canvas* canvas_;
 
     uint8_t text_size_;
+    int16_t line;
     Cursor cursor_;
 };
 
