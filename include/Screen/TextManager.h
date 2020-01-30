@@ -3,12 +3,14 @@
 
 #include <stdint.h>
 
+#include <ArduinoSTL.h>
+
 #include <Enums/Enums.h>
 #include <Screen/Canvas.h>
 
 namespace artris {
 
-struct Cursor
+struct Point2D
 {
     int16_t x;
     int16_t y;
@@ -37,14 +39,21 @@ public:
     void print(char c, uint8_t color=INVERSE);
 
     void setTextSize(uint8_t text_size);
-    uint8_t text_size_();
+    uint8_t getTextSize();
 
 private:
+    static constexpr uint8_t kMinTextSizeX = 6;
+    static constexpr uint8_t kMinTextSizeY = 8;
+
     Canvas* canvas_;
 
     uint8_t text_size_;
-    int16_t line;
-    Cursor cursor_;
+    uint16_t line_;
+    std::vector<uint16_t> line_base_y_;
+
+    Point2D cursor_;
+
+    void reallignLineBaseY(uint16_t target_line, uint16_t new_line_size_y);
 };
 
 }
